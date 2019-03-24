@@ -22,3 +22,4 @@ I'll take the liberty to write things without worrying too much about formatting
     - Tried to use pypeln, to make things cleaner/faster by using pipelines
       - Bad documentation, does not worth the stress.
 - Using connection pooling to improve database performance
+- Batching insertion of Location rows in PostgreSQL to improve performance
