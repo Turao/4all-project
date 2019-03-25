@@ -48,7 +48,7 @@ Other commands you might find useful:
 - `export OPENCAGE_KEY=[your_app_key_here]`
 
 
-#### Configuring ulimit:
+### Configuring ulimit:
 If you want to send a high amount of requests, you might have to increase the limit of files that can be opened simultaneously (since each request opens a file descriptor).
 
 To make things easier, we'll set both HARD and SOFT limits to the same value...
