@@ -1,5 +1,6 @@
 import unittest
 import asyncio
+import random
 from datapoints.geocoders.opencage_async import (
     OpenCageGeocoderAsync as Geocoder
 )
@@ -29,3 +30,16 @@ class TestOpenCageGeocoderAsync(unittest.TestCase):
         response = await Geocoder().reverse_geocode(latitude, longitude)
         self.assertIn('geometry', response)
         self.assertIn('components', response)
+
+    @async_test
+    async def test_mock_reverse_geocode_batch(self):
+        print('Testing on mock server - make sure mock server is running')
+        geocoder = Geocoder(base_url='http://localhost:8080/%s')
+        nlocations = 100
+        latlon_tuples = [
+            (random.uniform(-90, 90), random.uniform(-90, 90))
+            for i in range(nlocations)
+        ]
+        results = await geocoder.reverse_geocode_batch(latlon_tuples)
+        self.assertGreater(len(results), 0)
+        self.assertIsNotNone(results)
