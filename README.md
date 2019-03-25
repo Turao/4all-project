@@ -53,6 +53,11 @@ If you want to send a high amount of requests, you might have to increase the li
 
 To make things easier, we'll set both HARD and SOFT limits to the same value...
 
+**Shell script:** to help you avoid doing too much work, I've provided a shell script in `setup/set-ulimit.sh`. Please be advised that this script will only append the lines described below to the files (no replacement is done).
+
+- To execute the script, run from the project's directory: `./setup/set-ulimit.sh [system_user] [limit_you_want]`
+    - If you do not know your user, run: `whoami`
+
 - First, we'll ask for PAM to set some rules for us (use _optional_ instead of _required_, otherwise you might mistype the limit rule and be unable to log in)
   - Add the line `session optional pam_limits.so` to the following files:
     - `/etc/pam.d/common-session`
