@@ -23,3 +23,6 @@ I'll take the liberty to write things without worrying too much about formatting
       - Bad documentation, does not worth the stress.
 - Using connection pooling to improve database performance
 - Batching insertion of Location rows in PostgreSQL to improve performance
+- Had a lot of trouble debugging why the descriptor limits were not being properly set
+  - After fixing, I could test the application with 10k requests
+  - 10k requests in 13.3 seconds (about 750 RPS)

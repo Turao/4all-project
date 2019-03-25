@@ -46,3 +46,33 @@ Other commands you might find useful:
 
 #### OpenCageAPI
 - `export OPENCAGE_KEY=[your_app_key_here]`
+
+
+#### Configuring ulimit:
+If you want to send a high amount of requests, you might have to increase the limit of files that can be opened simultaneously (since each request opens a file descriptor).
+
+To make things easier, we'll set both HARD and SOFT limits to the same value...
+
+- First, we'll ask for PAM to set some rules for us (use _optional_ instead of _required_, otherwise you might mistype the limit rule and be unable to log in)
+  - Add the line `session optional pam_limits.so` to the following files:
+    - `/etc/pam.d/common-session`
+    - `/etc/pam.d/common-session-noninteractive`
+
+- Then, add the limit rules to the config file `/etc/security/limits.conf`
+  - Add the line `* soft nofile 10240`
+  - Add the line `* hard nofile 10240`
+
+- Log out
+- Log in
+
+- Finally, check your SOFT limit by running `ulimit -n` in the terminal
+
+##### Troubleshooting:
+- The limit did not change:
+  - (a bit hacky) try to `su [your_user_here]` and run the command again, execute the program from this shell
+  - check for typos in your limit rules
+  - check if PAM is enabled and calling limits.so
+
+More about _limits.conf_ and _pam.d_ can be found at:
+- https://linux.die.net/man/5/limits.conf
+- https://linux.die.net/man/5/pam.d
