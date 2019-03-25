@@ -76,3 +76,7 @@ To make things easier, we'll set both HARD and SOFT limits to the same value...
 More about _limits.conf_ and _pam.d_ can be found at:
 - https://linux.die.net/man/5/limits.conf
 - https://linux.die.net/man/5/pam.d
+
+
+### Running the Parser:
+To execute the parsing module, run the following command: `python -m datapoints.parser.location_parser [your_dataset_here]`
