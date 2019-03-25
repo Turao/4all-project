@@ -12,7 +12,7 @@
 To avoid versioning issues, you should activate the project's virtual environment.
 - _cd_ to the app directory: i.e. `cd 4all-project/`
 - Activate the environment:
-  - if using bash/zsh `source ./bin/activate`
+  - if using bash/zsh: `source ./bin/activate`
   - the command for other shells (fish/csh/tcsh) can be found at https://docs.python.org/3/library/venv.html
 
 ### Docker PostgreSQL
@@ -85,3 +85,23 @@ More about _limits.conf_ and _pam.d_ can be found at:
 
 ### Running the Parser:
 To execute the parsing module, run the following command: `python -m datapoints.parser.location_parser [your_dataset_here]`
+
+
+### Running Unit Tests:
+Unit tests are located in the `src/datapoints/tests` directory.
+
+To execute **all** unit tests:
+- cd to `src/`
+- run the unittest module in discover mode: `python -m unittest discover`
+
+To execute unit tests from a single **module**:
+- cd to `src/`
+- run the unittest module and pass module you want to test
+    - i.e. `python -m unittest datapoints.tests.test_location`
+
+
+### Code Quality:
+To measure code complexity (i.e. cyclomatic complexity), you can use the _radon_ tool
+- `radon cc -a src/`
+
+More about radon can be found at: https://pypi.org/project/radon/
