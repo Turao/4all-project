@@ -16,8 +16,7 @@ class Hermes():
             for i in range(nplaces)
         ]
 
-        mock_url = 'http://localhost:8080/%s'
-        results = await Geocoder(mock_url).reverse_geocode_batch(latlon)
+        results = await Geocoder(base_url='http://localhost:8080/%s').reverse_geocode_batch(latlon)
 
         locations = []
         for result in results:
