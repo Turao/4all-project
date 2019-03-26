@@ -83,8 +83,16 @@ More about _limits.conf_ and _pam.d_ can be found at:
 - https://linux.die.net/man/5/pam.d
 
 
-### Running the Parser:
-To execute the parsing module, run the following command: `python -m datapoints.parser.location_parser [your_dataset_here]`
+### Running the Extractor (aka Hermes):
+To execute the data extractor module (aka Hermes):
+- cd to `src/`
+- run `python -m datapoints.hermes [your_dataset_here]`.
+
+
+### Running only the Parser:
+To execute only the parsing module:
+- cd to `src/`
+- run `python -m datapoints.parser.location_parser [your_dataset_here]`
 
 
 ### Running Unit Tests:

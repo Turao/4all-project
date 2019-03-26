@@ -1,6 +1,7 @@
 import asyncio
-import random
 import time
+import sys
+from .parser.location_parser import LocationParser
 from .models.location import Location
 from .geocoders.opencage_async import (
     OpenCageGeocoderAsync as Geocoder
@@ -9,14 +10,16 @@ from .geocoders.opencage_async import (
 
 class Hermes():
     @staticmethod
-    async def get_random_places(nplaces):
-        # generate random valued (latitude, longitude) tuples
-        latlon = [
-            (random.uniform(-90, 90), random.uniform(-180, 180))
-            for i in range(nplaces)
+    async def get_locations_from_file(f):
+        # generate latitude and longitude values
+        latlon_tuples = [
+            (lat, lon)
+            for lat, lon, distance in LocationParser().parse(f)
         ]
 
-        results = await Geocoder(base_url='http://localhost:8080/%s').reverse_geocode_batch(latlon)
+        latlon_tuples = latlon_tuples[:500]
+
+        results = await Geocoder().reverse_geocode_batch(latlon_tuples)
 
         locations = []
         for result in results:
@@ -39,14 +42,14 @@ class Hermes():
 
         print('Locations', len(locations))
 
-        Location.bulk_create_safe(locations, batch_size=200)
+        Location.bulk_create_safe(locations, batch_size=50)
         print('Locations in DB:', Location.select().count())
 
 
 start = time.time()
-requests = 2000
+requests = 500
 loop = asyncio.get_event_loop()
-loop.run_until_complete(Hermes.get_random_places(requests))
+loop.run_until_complete(Hermes.get_locations_from_file(sys.argv[1]))
 end = time.time()
 
 time = end - start
