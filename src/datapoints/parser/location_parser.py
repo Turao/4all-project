@@ -6,7 +6,15 @@ from .distance_parser import DistanceParser
 
 
 class LocationParser(FileParser):
-    def parse(self, f):
+    def parse(self, filepath):
+        with open(filepath, 'r') as f:
+            while True:
+                try:
+                    yield self.__parse_location(f)
+                except EOFError:
+                    break
+
+    def __parse_location(self, f):
         _strs = [f.readline() for i in (range(3))]
         # readline does not raise EOF exceptions
         # so we stop if all strings were empty
@@ -20,11 +28,5 @@ class LocationParser(FileParser):
 
 
 if __name__ == '__main__':
-    with open(sys.argv[1], 'r') as f:
-        # try:
-        while True:
-            try:
-                print(LocationParser().parse(f))
-            except EOFError:
-                break
-
+    for latitude, longitude, distance in LocationParser().parse(sys.argv[1]):
+        print(latitude, longitude, distance)
