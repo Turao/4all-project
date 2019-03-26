@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: "${DB_NAME}"
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+  
+  datapoints:
+    build: .
+    volumes:
+      - ./src:/src
+    depends_on:
+      - db
+      - mock_server
+    env_file: .env
+  
+  mock_server:
+    build:
+      context: .
+      dockerfile: Dockerfile-tests
+    env_file: .env

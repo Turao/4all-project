@@ -1,6 +1,7 @@
 from aiohttp import web
 import asyncio
 import random
+import sys
 
 
 async def handle(request):
@@ -32,15 +33,24 @@ async def handle(request):
     return web.json_response(mock_osm_response)
 
 
-async def init():
+async def init(host, port):
     app = web.Application()
     app.router.add_route('GET', '/', handle)
     app.router.add_route('GET', '/{any}', handle)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, 'localhost', 8080)
+    site = web.TCPSite(runner, 'mock_server', 8080)
     await site.start()
 
+
+host = 'localhost'
+port = 8080
+try:
+    host = sys.argv[1]
+    port = sys.argv[2]
+except Exception:
+    pass
+
 loop = asyncio.get_event_loop()
-loop.run_until_complete(init())
+loop.run_until_complete(init(host, port))
 loop.run_forever()
