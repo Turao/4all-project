@@ -1,8 +1,8 @@
 import unittest
 import asyncio
 import random
-from datapoints.geocoders.opencage_async import (
-    OpenCageGeocoderAsync as Geocoder
+from datapoints.geocoders.opencage_geocoder import (
+    OpenCageGeocoder as Geocoder
 )
 import os
 

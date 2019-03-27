@@ -1,19 +1,14 @@
-import asyncio
+from .geocoder import Geocoder
 from aiohttp import ClientSession, TCPConnector
 import os
 
 
-class OpenCageGeocoderAsync():
+class OpenCageGeocoder(Geocoder):
     def __init__(self,
                  app_key=os.environ.get('OPENCAGE_KEY'),
                  base_url='https://api.opencagedata.com/geocode/v1/json?%s'):
         self.app_key = app_key
         self.base_url = base_url
-
-    @staticmethod
-    async def fetch(session, url):
-        async with session.get(url) as response:
-            return await response.json()
 
     async def reverse_geocode(self, latitude, longitude):
         url = self.base_url % 'q={}+{}&key={}'.format(latitude,
@@ -36,11 +31,3 @@ class OpenCageGeocoderAsync():
                 # take the first match since the api returns
                 # multiple addresses (sorted by relevance)
                 return results[0] if results else {}
-
-    async def reverse_geocode_batch(self, latlon_tuples):
-        tasks = (
-            self.reverse_geocode(lat, lon)
-            for lat, lon in latlon_tuples
-        )
-        results = await asyncio.gather(*tasks)
-        return results
