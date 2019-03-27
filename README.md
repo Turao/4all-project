@@ -6,7 +6,7 @@
 ## Overview
 
 - Python Version: 3.7.2
-- Docker version 18.06.1-ce, build e68fc7a
+- Docker version 18.09.3-ce
 
 ---
 ## How-to's:
