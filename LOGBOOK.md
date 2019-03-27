@@ -12,7 +12,7 @@ I'll take the liberty to write things without worrying too much about formatting
   - As a dependency of Peewee, I had to install psycopg2 (a lower level lib to handle postgresql stuff)
 - About the GPS APIs:
   - Tried to use Google Maps API: but is a pay-per-request service (with very low cap when using it for free)
-  - Tried to use Nominatim API (uses OpenStreetMap data). Succesfull, but had a VERY low RPS (requests per second) cap of 1 (yes, 1 RPS).
+  - Tried to use Nominatim API (uses OpenStreetMap data). Successful, but had a VERY low RPS (requests per second) cap of 1 (yes, 1 RPS).
     - It would take me ~100 sec to do 100 queries. Nope.
   - Using OpenCage API: pay-per-request, as the Google Maps API, but with a limit of 2.5k requests per day.
     - Requests per second (synchronous): around 2.5 rps.
