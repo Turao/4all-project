@@ -1,10 +1,12 @@
 # 4all-project
 
+[![CircleCI](https://circleci.com/gh/Turao/4all-project/tree/develop.svg?style=svg&circle-token=7f214d329f95bee31c60557f08ac58fbcbe650a4)](https://circleci.com/gh/Turao/4all-project/tree/develop)
+
 ---
 ## Overview
 
 - Python Version: 3.7.2
-- Docker version 18.06.1-ce, build e68fc7a
+- Docker version 18.09.3-ce
 
 ---
 ## How-to's:
@@ -88,18 +90,23 @@ More about _limits.conf_ and _pam.d_ can be found at:
 
 
 ### Running the Extractor (aka Hermes):
+Hermes is the module responsible for calling the Parser and enriching the database with data provided by the OpenCage Geocoder.
+
 To execute the data extractor module (aka Hermes):
 - make sure you have your virtual environment activated (see above)
 - cd to `src/`
 - run `python -m datapoints.hermes [your_dataset_here]`.
+  - mock data is provided in `datapoints/tests/mock_coordinates/` 
 
 
 ### Running only the Parser:
-To execute only the parsing module:
+Parser (or Location Parser, to be specific) is the module responsible for parsing the datasets, extracting latitude, longitude and distance data.
+
+To execute (only) the parsing module :
 - make sure you have your virtual environment activated (see above)
 - cd to `src/`
 - run `python -m datapoints.parser.location_parser [your_dataset_here]`
-
+  - - mock data is provided in `datapoints/tests/mock_coordinates/`
 
 ### Running Unit Tests (manually):
 Unit tests are located in the `src/datapoints/tests` directory.

@@ -12,7 +12,7 @@ I'll take the liberty to write things without worrying too much about formatting
   - As a dependency of Peewee, I had to install psycopg2 (a lower level lib to handle postgresql stuff)
 - About the GPS APIs:
   - Tried to use Google Maps API: but is a pay-per-request service (with very low cap when using it for free)
-  - Tried to use Nominatim API (uses OpenStreetMap data). Succesfull, but had a VERY low RPS (requests per second) cap of 1 (yes, 1 RPS).
+  - Tried to use Nominatim API (uses OpenStreetMap data). Successful, but had a VERY low RPS (requests per second) cap of 1 (yes, 1 RPS).
     - It would take me ~100 sec to do 100 queries. Nope.
   - Using OpenCage API: pay-per-request, as the Google Maps API, but with a limit of 2.5k requests per day.
     - Requests per second (synchronous): around 2.5 rps.
@@ -27,3 +27,6 @@ I'll take the liberty to write things without worrying too much about formatting
   - After fixing, I could test the application with 10k requests
   - 10k requests in 13.3 seconds (about 750 RPS)
 - Implemented a modular Parser module (inpired by the Interpreter pattern)
+- The whole process of setting everything up was too tiresome. Decided to use Docker Compose to automate things for me.
+- Since I had a compose file done and working, decided to integrate CircleCI. This way you can see the tests passing (or not) without having to run them. :)
+  - But there's a downside: Since we use docker-compose, we need a VM executor (multiple containers). Because of that, we cannot test locally with the CircleCI-CLI (we have to do it manually, as described in the README file)
