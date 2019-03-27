@@ -9,7 +9,20 @@
 - Docker version 18.09.3-ce
 
 ---
-## How-to's:
+## Table of contents:
+- [Configuring](#configuring)
+  - [Python Virtual Environment](#python-virtual-environment)
+  - [Docker Setup](#docker-setup)
+    - [Manually](#manually)
+  - [Configuring ulimit](#configuring-ulimit)
+    - [Troubleshooting](#troubleshooting)
+- [Running Hermes (data ingestion module)](#running-hermes-data-ingestion-module)
+  - [Running only the Parser]($running-parser)
+- [Running Unit Tests (manually)](#running-unit-tests-manually)
+- [Code Quality](#code-quality)
+
+---
+## Configuring:
 
 ### Python Virtual Environment
 To avoid dependency issues, you should activate the project's virtual environment.
@@ -18,9 +31,7 @@ To avoid dependency issues, you should activate the project's virtual environmen
   - if using bash/zsh: `source ./bin/activate`
   - the command for other shells (fish/csh/tcsh) can be found at https://docs.python.org/3/library/venv.html
 
-
 ### Docker Setup
-
 **TLDR:** You can run things:
 - Manually:
   - the hard way: creating containers by yourself
@@ -89,7 +100,8 @@ More about _limits.conf_ and _pam.d_ can be found at:
 - https://linux.die.net/man/5/pam.d
 
 
-### Running the Extractor (aka Hermes):
+---
+## Running Hermes (data ingestion module):
 Hermes is the module responsible for calling the Parser and enriching the database with data provided by the OpenCage Geocoder.
 
 To execute the data extractor module (aka Hermes):
@@ -97,7 +109,6 @@ To execute the data extractor module (aka Hermes):
 - cd to `src/`
 - run `python -m datapoints.hermes [your_dataset_here]`.
   - mock data is provided in `datapoints/tests/mock_coordinates/` 
-
 
 ### Running only the Parser:
 Parser (or Location Parser, to be specific) is the module responsible for parsing the datasets, extracting latitude, longitude and distance data.
@@ -108,7 +119,9 @@ To execute (only) the parsing module :
 - run `python -m datapoints.parser.location_parser [your_dataset_here]`
   - - mock data is provided in `datapoints/tests/mock_coordinates/`
 
-### Running Unit Tests (manually):
+
+---
+## Running Unit Tests (manually):
 Unit tests are located in the `src/datapoints/tests` directory.
 
 To execute **all** unit tests:
@@ -123,7 +136,8 @@ To execute unit tests from a single **module**:
     - i.e. `python -m unittest datapoints.tests.test_location`
 
 
-### Code Quality:
+---
+## Code Quality:
 To measure code complexity (i.e. cyclomatic complexity), you can use the _radon_ tool
 - `radon cc -a src/`
 
