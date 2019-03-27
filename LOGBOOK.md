@@ -27,3 +27,6 @@ I'll take the liberty to write things without worrying too much about formatting
   - After fixing, I could test the application with 10k requests
   - 10k requests in 13.3 seconds (about 750 RPS)
 - Implemented a modular Parser module (inpired by the Interpreter pattern)
+- The whole process of setting everything up was too tiresome. Decided to use Docker Compose to automate things for me.
+- Since I had a compose file done and working, decided to integrate CircleCI. This way you can see the tests passing (or not) without having to run them. :)
+  - But there's a downside: Since we use docker-compose, we need a VM executor (multiple containers). Because of that, we cannot test locally with the CircleCI-CLI (we have to do it manually, as described in the README file)
