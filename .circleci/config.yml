@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     machine: true
+    working_directory: ~/4all-project
 
     steps:
       - checkout
-
       - run: docker-compose up -d
