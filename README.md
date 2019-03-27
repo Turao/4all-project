@@ -1,5 +1,7 @@
 # 4all-project
 
+[![CircleCI](https://circleci.com/gh/Turao/4all-project/tree/develop.svg?style=svg&circle-token=7f214d329f95bee31c60557f08ac58fbcbe650a4)](https://circleci.com/gh/Turao/4all-project/tree/develop)
+
 ---
 ## Overview
 
