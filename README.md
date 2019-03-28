@@ -5,11 +5,18 @@
 ---
 ## Overview
 
-- Python Version: 3.7.2
-- Docker version 18.09.3-ce
+_Datapoints_ is a Python module that provides functionalities for data extraction and storage.
+
+Its submodule _Hermes_ is responsible for extracting geopoint data from a file and enriching this data by using a reverse geocoding API (OpenCage).
+
+This project provides an _ENHANCEMENTS_ file, with things that can be improved.
+
+It also provides a _LOG BOOK_, which is used to log decisions made throughout the development of this project. I think this might help you understand why things are the way they are.
+
 
 ---
 ## Table of contents:
+- [Dependencies](#dependencies)
 - [Configuring](#configuring)
   - [Python Virtual Environment](#python-virtual-environment)
   - [Docker Setup](#docker-setup)
@@ -20,6 +27,15 @@
   - [Running only the Parser]($running-parser)
 - [Running Unit Tests (manually)](#running-unit-tests-manually)
 - [Code Quality](#code-quality)
+
+
+---
+## Dependencies:
+
+- Python (version: 3.7.2)
+  - Python dependencies can be found in `requirements.txt`
+- Docker (version 18.09.3-ce)
+
 
 ---
 ## Configuring:
