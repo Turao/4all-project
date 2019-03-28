@@ -71,6 +71,8 @@ Check the environment variables provided in the `.env` file.
 
 ##### The hard way
 - Export the Environment Variables (check the `.env` file for reference)
+  - **Note:** the variable DB_HOST should be set as localhost if running the database locally
+    - `export DB_HOST=localhost`
 - To setup the PostgreSQL container, run the following command: `sudo docker run --name 4all-postgresql -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=$DB_NAME -e POSTGRES_USER=$DB_USER -p 5432:$DB_PORT -d postgres`
   - This may take a while, since it might have to download the PostgreSQL image from the Docker Hub.
 
