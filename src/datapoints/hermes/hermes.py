@@ -27,13 +27,14 @@ class Hermes():
             consumer._task.cancel()
 
 
-start = time.time()
+if __name__ == '__main__':
+    start = time.time()
 
-loop = asyncio.get_event_loop()
-hermes = Hermes(geocoder=OpenCageGeocoder(base_url='http://localhost:8080/%s'))
-loop.run_until_complete(hermes.enrich(sys.argv[1], 200, 5))
+    loop = asyncio.get_event_loop()
+    hermes = Hermes(geocoder=OpenCageGeocoder())
+    loop.run_until_complete(hermes.enrich(sys.argv[1], 200, 5))
 
-end = time.time()
+    end = time.time()
 
-time = end - start
-print('Time:', time)
+    time = end - start
+    print('Time:', time)
