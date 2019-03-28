@@ -119,7 +119,7 @@ To execute (only) the parsing module :
 - make sure you have your virtual environment activated (see above)
 - cd to `src/`
 - run `python -m datapoints.parser.location_parser [your_dataset_here]`
-  - - mock data is provided in `datapoints/tests/mock_coordinates/`
+  - mock data is provided in `datapoints/tests/mock_coordinates/`
 
 
 ---
