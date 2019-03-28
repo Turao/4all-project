@@ -61,6 +61,7 @@ To avoid dependency issues, you should activate the project's virtual environmen
 #### Manually
 In case you do not have Docker installed in your machine, please follow the instructions at https://docs.docker.com/install/
 Check the environment variables provided in the `.env` file.
+- I **strongly** suggest you to create an OpenCage account at https://opencagedata.com/ so you can use your own API key.
 - **Note:** you should **NEVER** expose your .env files to repos.
   - I've provided them so you can run the easy way for yourself without having to create the file.
 
