@@ -14,3 +14,13 @@ I could do this by opening enhancement issues, but you probably would not look t
   - i.e. Functional languanges, or others with better support to concurrency such as Go
 
 - I've mentioned in the log book, but I'm consuming data from text files. I think it would be a great idea to implement ingestion based on input, so we can pipe data into the module. This way we could run it indefinitely... :)
+
+### Analytics
+- What are these geopoints? Customers?
+  - Users
+    - Do some customer profiling and recommend things based on what people nearby is buying.
+  - Establishments/Shops
+    - Quantify how many shops do we have per area, and cross reference their timestamps to gather opening/closing times.
+    - Verify shops that are underselling and offer them 'recommendation boost packages'
+  - Both
+    - We could provide dynamic discounts based on service usage (per area, customer profiles, etc)
