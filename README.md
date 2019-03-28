@@ -110,7 +110,7 @@ To execute the data extractor module (aka Hermes):
 - run `python -m datapoints.hermes [your_dataset_here] [optional_batch_size] [optional_timeout]`.
   - mock data is provided in `datapoints/tests/mock_coordinates/` 
   - batch size defaults to 200 rows at a time
-  - batch size defaults to 5 seconds
+  - timeout defaults to 5 seconds
 
 ### Running only the Parser:
 Parser (or Location Parser, to be specific) is the module responsible for parsing the datasets, extracting latitude, longitude and distance data.
